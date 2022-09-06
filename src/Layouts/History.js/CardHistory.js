@@ -6,8 +6,8 @@ import { useSWRConfig } from 'swr'
 const CardHistory = ({item, userId}) => {
   const {mutate} = useSWRConfig()
   const handleDelete = () => {
-    console.log(moment(item.update_at).format(`yyyy-MM-DD HH:mm:ss`))
-    fetch(`${process.env.URL_BE}api/v1/orders/delete?productId=${item.product_id}&userId=${userId}&date=${moment(item.update_at).format(`yyyy-MM-DD HH:mm:ss`)}&size=${item.size}`,
+
+    fetch(`${process.env.URL_BE}api/v1/orders/delete?productId=${item.product_id}&userId=${userId}&date=${moment(item.update_at).utc().format(`yyyy-MM-DD HH:mm:ss`)}&size=${item.size}`,
     {
       method: "PATCH",
     })
