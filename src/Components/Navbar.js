@@ -27,6 +27,7 @@ export default function Navbar() {
         <Image src='/img/logo.svg' 
         width={30}
         height={33}
+        alt='logo'
         />
         </div>
         

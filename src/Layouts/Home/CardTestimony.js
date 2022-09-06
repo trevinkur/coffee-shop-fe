@@ -12,6 +12,7 @@ export default function CardTestimony() {
                         src="/img/contoh.png"
                         width={50}
                         height={50}
+                        alt='profile'
                     />
                     <div className="d-flex flex-column justify-content-center">
                         <h4>Viezh Robert</h4>

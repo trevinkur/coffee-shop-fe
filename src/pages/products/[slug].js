@@ -25,6 +25,7 @@ const Product = ({product}) => {
 
 
     useEffect(() => {
+        
         fetch(`${process.env.URL_BE}api/v1/product/size?productId=${product?.data[0]?.product_id}&size=${size}`)
         .then(res => res.json())
         .then(res => setPrice(res.data[0].price))

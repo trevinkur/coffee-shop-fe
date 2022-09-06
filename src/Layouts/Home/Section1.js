@@ -8,7 +8,9 @@ export default function Section1() {
             <div className="col-5">
                 <Image src="/img/teamwork.png"
                 width={500}
-                height={450} />
+                height={450}
+                alt='teamwork'
+                 />
             </div>
             <div className="col-5">
                 <div className="d-flex flex-column justify-content-center" style={{height: "100%"}}>

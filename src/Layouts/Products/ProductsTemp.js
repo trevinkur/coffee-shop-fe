@@ -1,6 +1,6 @@
 import React from 'react'
 import CardProducts from './CardProducts'
-import ProdCategory from './prodCategory'
+import ProdCategory from './ProdCategory'
 
 const ProductsTemp = ({products}) => {
   console.log(products)

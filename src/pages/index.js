@@ -8,7 +8,7 @@ import HomeFav from '../Layouts/Home/HomeFav'
 import HomePromo from '../Layouts/Home/HomePromo'
 import OurPartner from '../Layouts/Home/OurPartner'
 import OurStore from '../Layouts/Home/OurStore'
-import Section1 from '../Layouts/Home/section1'
+import Section1 from '../Layouts/Home/Section1'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
