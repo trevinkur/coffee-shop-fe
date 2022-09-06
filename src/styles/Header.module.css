@@ -1,0 +1,6 @@
+.container {
+    background-image: url("/img/header.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 30px 70px;
+}

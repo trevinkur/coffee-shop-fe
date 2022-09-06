@@ -1,0 +1,23 @@
+/* button */
+
+.btn {
+    border-radius: 10px;
+}
+
+.btnMini {
+    border-radius: 50px;
+}
+
+.btn:hover {
+    opacity: 0.5;
+}
+
+.btnPrimary {
+    color: #6A4029;
+    background-color: #FFBA33;
+}
+
+.btnSecondary {
+    background-color: #6A4029;
+    color: white;
+}

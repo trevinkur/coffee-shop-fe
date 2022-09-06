@@ -1,0 +1,17 @@
+.active {
+    border-bottom: 3px solid #6A4029;
+    
+}
+
+.nav:hover {
+    background-color: #6A4029;
+    color: white;
+}
+
+.nav h3:hover {
+    color: white;
+}
+
+.black {
+    background-color: black;
+}
