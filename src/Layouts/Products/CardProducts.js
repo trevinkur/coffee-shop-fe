@@ -9,7 +9,8 @@ const CardProducts = ({product}) => {
         style={{marginTop: "-40px", overflow: 'hidden', width: "125px", height: "125px"}}>
             <Image
             className='rounded-circle'
-            src="/img/contoh.png"
+            // src="/img/contoh.png"
+            src={`${process.env.URL_BE}static/${product.cover}`}
             width={125} 
             height={125}
             alt={product.name}    

@@ -7,6 +7,9 @@ const nextConfig = {
   },
   env: {
     URL_BE: 'https://whale-app-a7nox.ondigitalocean.app/'
+  },
+  images: {
+    domains: ['whale-app-a7nox.ondigitalocean.app']
   }
 }
 

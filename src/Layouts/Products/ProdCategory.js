@@ -5,9 +5,9 @@ import styles from "../../styles/Products.module.css"
 
 const ProdCategory = () => {
     const router = useRouter()
-    const {query} = router.query
+    const {query} = router
     const handleNav = (e) => {
-        console.log(e.target.id, "hi")
+        console.log(query, "hi")
         router.replace({
             pathname: "/products",
             query: {...query, category: e.target.id}
@@ -15,30 +15,30 @@ const ProdCategory = () => {
     }
   return (<>
         
-        <a className={`${router.query.category === "favorite" ?
+        <div className={`${router.query.category === "favorite" ?
          styles.active : ""}  ${styles.nav} color-secondary col text-center p-2`}
-        onClick={handleNav} id="favorite"
+        onClick={handleNav} id=""
         >
-            <h3 className='font-l bold' id="favorite">Favorite Product</h3>
-        </a>
-        <a className={`${router.query.category === "coffee" ?
+            <h3 className='font-l bold' id="">Favorite Product</h3>
+        </div>
+        <div className={`${router.query.category === "Coffee" ?
          styles.active : ""} ${styles.nav} color-secondary col text-center p-2`}
-        onClick={handleNav} id="coffee"
+        onClick={handleNav} id="Coffee"
         >
-            <h3 className='font-l bold ' id="coffee">coffee</h3>
-        </a>
-        <a className={`${router.query.category === "nonCoffee" ?
+            <h3 className='font-l bold ' id="coffee">Coffee</h3>
+        </div>
+        <div className={`${router.query.category === "Beverages" ?
          styles.active : ""} ${styles.nav} color-secondary col text-center p-2`}
-        onClick={handleNav} id="nonCoffee"
+        onClick={handleNav} id="Beverages"
         >
-            <h3 className='font-l bold ' id="nonCoffee">Non Coffee</h3>
-        </a>
-        <a className={`${router.query.category === "food" ?
-         styles.active : ""} ${styles.nav}  col text-center p-2`}
-        onClick={handleNav} id="food"
+            <h3 className='font-l bold ' id="Beverages">Beverages</h3>
+        </div>
+        <div className={`${router.query.category === "Food" ?
+         styles.active : ""} ${styles.nav} color-secondary col text-center p-2`}
+        onClick={handleNav} id="Food"
         >
-            <h3 className='font-l bold ' id="food">food</h3>
-        </a>
+            <h3 className='font-l bold ' id="food">Food</h3>
+        </div>
 
     </>
   )

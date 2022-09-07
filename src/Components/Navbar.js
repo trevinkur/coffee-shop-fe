@@ -1,9 +1,13 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import { useRouter } from "next/router"
 
 export default function Navbar() {
+  const [search, setSearch] = useState()
   const [userId, setUserId] = useState()
+  const router = useRouter()
+  const {query} = router
 
     
     useEffect(() => {
@@ -19,6 +23,14 @@ export default function Navbar() {
       localStorage.removeItem("role")
     }
     
+    const handleSearch = (e) => {
+      e.preventDefault()
+      // router.push(`/products?search=${search}`)
+      router.replace({
+        pathname: "/products",
+        query: {...query, search: search}
+    })
+    }
 
     return(
     <nav className="navbar navbar-expand-lg bg-light px-5 py-3">
@@ -54,8 +66,12 @@ export default function Navbar() {
       {userId ? (
         <form className="d-flex" role="search">
           <button className="btn btn-secondary" onClick={handleLogout}>logout</button>
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button className="btn btn-primary" type="submit">Search</button>
+            <input className="form-control me-2" type="search"
+             placeholder="Search" aria-label="Search"
+             onChange={(e) => setSearch(e.target.value)}
+              />
+            <button className="btn btn-primary" 
+            type="submit" onClick={handleSearch}>Search</button>
         </form>
       ) : (
         <form className="d-flex" >
