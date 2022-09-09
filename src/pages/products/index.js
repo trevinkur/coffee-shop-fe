@@ -10,8 +10,11 @@ const Products = ({products, coupons}) => {
     <Layout>
 
     <Meta />
-    <main className='container-fluid'>
-      <div className='row'>
+    <main 
+      className='container-fluid ' 
+      style={{minHeight: '100vh'}}
+    >
+      <div className='row' style={{minHeight: '100vh'}}>
         <Promo coupons={coupons}/>
         <ProductsTemp products={products}/>
       </div>

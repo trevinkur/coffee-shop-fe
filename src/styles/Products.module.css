@@ -1,5 +1,6 @@
 .active {
-    border-bottom: 3px solid #6A4029;
+    border-bottom: 5px solid #6A4029;
+    box-shadow: 0 4px 5px #888;
     
 }
 

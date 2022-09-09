@@ -4,12 +4,13 @@ import Link from 'next/link'
 const CardProducts = ({product}) => {
   return (
     <Link href={`/products/${product.slug}?size=regular`}>
-      <article className="col-3 d-flex flex-column align-items-center border rounded-5 mt-5 shadow me-3" style={{width: "11rem"}}>
+      <article 
+        className="col-3 d-flex flex-column align-items-center justify-content-between border rounded-5 shadow-lg m-3"
+        style={{width: "10rem"}} type="button">
         <legend className='d-flex text-center rounded-circle shadow' 
         style={{marginTop: "-40px", overflow: 'hidden', width: "125px", height: "125px"}}>
             <Image
             className='rounded-circle'
-            // src="/img/contoh.png"
             src={`${process.env.URL_BE}static/${product.cover}`}
             width={125} 
             height={125}
@@ -17,8 +18,10 @@ const CardProducts = ({product}) => {
             />
         </legend>
         <div className='text-center py-3 '>
-            <h3>{product.name}</h3>
-            <p>{product.price}</p>
+            <h3 
+              className='color-black'
+            >{product.name}</h3>
+            <p className='color-secondary bold'>IDR {product.price}</p>
         </div>
     </article>
     </Link>

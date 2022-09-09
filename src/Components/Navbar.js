@@ -8,7 +8,6 @@ export default function Navbar() {
   const [userId, setUserId] = useState()
   const router = useRouter()
   const {query} = router
-
     
     useEffect(() => {
       setUserId(localStorage?.getItem("userId"));
@@ -33,7 +32,7 @@ export default function Navbar() {
     }
 
     return(
-    <nav className="navbar navbar-expand-lg bg-light px-5 py-3">
+    <nav className="navbar navbar-expand-lg border-bottom px-5 py-3">
     <div className="container-fluid">
         <div className="navbar-brand me-3">
         <Image src='/img/logo.svg' 
@@ -43,41 +42,89 @@ export default function Navbar() {
         />
         </div>
         
-        <Link href="/"><a className="navbar-brand bold font-m" >Coffee Shop</a></Link>
+        <Link href="/"><a className="navbar-brand bold font-m " >Coffee Shop</a></Link>
     
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-            <Link href="/"><a className="nav-link active" aria-current="page" href="#">Home</a></Link>
+    <div className="collapse navbar-collapse d-md-none d-flex justify-content-end" id="navbarSupportedContent">
+      <ul className="navbar-nav  mb-2 mb-lg-0 d-flex justify-content-end">
+        <li className="nav-item me-2">
+            <Link href="/">
+              <a className={`nav-link ${router.route === '/' && 'color-secondary bold'} `} 
+              aria-current="page" 
+            >Home</a></Link>
         </li>
-        <li className="nav-item">
-            <Link href="/products"><a className="nav-link" href="#">Products</a></Link>
+        <li className="nav-item me-2">
+          <Link href="/products">
+            <a className={`nav-link ${router.route === '/products' && 'color-secondary bold'} `} 
+            >Products</a>
+          </Link>
         </li>
-        <li className="nav-item">
-            <Link href="/cart"><a className="nav-link ">Your Cart</a></Link>
+        <li className="nav-item me-2">
+            <Link href="/cart">
+              <a className={`nav-link ${router.route === '/cart' && 'color-secondary bold'} `} 
+              >Your Cart</a>
+            </Link>
         </li>
-        <li className="nav-item">
-            <Link href="/history"><a className="nav-link">History</a></Link>
+        <li className="nav-item me-5">
+          <Link href="/history">
+            <a className={`nav-link ${router.route === '/history' && 'color-secondary bold'} `} 
+            >History</a>
+          </Link>
         </li>
       </ul>
       {userId ? (
         <form className="d-flex" role="search">
-          <button className="btn btn-secondary" onClick={handleLogout}>logout</button>
-            <input className="form-control me-2" type="search"
-             placeholder="Search" aria-label="Search"
-             onChange={(e) => setSearch(e.target.value)}
-              />
-            <button className="btn btn-primary" 
-            type="submit" onClick={handleSearch}>Search</button>
+            <div className="input-group rounded-pill mx-3">
+            <span className="input-group-text bg-gray"
+            type="submit" onClick={handleSearch}
+            >
+              <i class="bi bi-search"></i>
+            </span>
+              <input 
+                className="form-control me-2 bg-gray-1 " 
+                type="search"
+                placeholder="Search" aria-label="Search"
+                onChange={(e) => setSearch(e.target.value)}
+                />
+            </div>
+            <div className="dropdown d-flex align-items-center"
+              
+            >
+            <div
+              className="d-flex"
+              data-bs-toggle="dropdown" aria-expanded="false"
+            >
+            <Image
+              className="rounded-circle"
+              src='/img/profileDefault.jpg'
+              width={55}
+              height={55}
+              alt='profileImage'
+            />
+            </div>
+            <ul className="dropdown-menu mt-2" style={{marginLeft: '-100px'}}>
+              <li><a 
+                class="dropdown-item"
+                onClick={handleLogout} 
+              >Logout</a>
+              </li>
+            </ul>
+            </div>
+            
+            
+            {/* <button className="btn btn-primary" 
+            type="submit" onClick={handleSearch}
+            >Search</button> */}
         </form>
       ) : (
-        <form className="d-flex" >
-        <Link href="/auth/signin"><a className="me-2">Login</a></Link>
+        <form className="d-flex " >
+        <Link href="/auth/signin"><a className="me-4 align-self-center bold color-black">Login</a></Link>
         <Link href='/auth/signup'>
-          <button className="btn btn-primary" type="submit">Sign Up</button>
+          <button 
+            className="btn btn-primary rounded-pill px-4 font-s"
+            type="submit" style={{boxShadow: '0 0 8px #FFBA33'}}>Sign Up</button>
         </Link>
       </form>
       )}

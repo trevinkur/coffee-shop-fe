@@ -1,0 +1,12 @@
+.card:hover {
+    background-color: #609760;
+}
+
+.card {
+    background-color: #88B788;
+}
+
+.active {
+    /* border: 8px solid rgb(71, 111, 219, 0.3) ; */
+    box-shadow: 0 0 20px rgb(71, 111, 219);
+}
