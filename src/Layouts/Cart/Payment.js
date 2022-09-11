@@ -1,4 +1,5 @@
 import { addRequestMeta } from 'next/dist/server/request-meta';
+import Image from 'next/image';
 import { Router, useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { useGetOrders } from '../../helper/useOrders'
@@ -50,59 +51,108 @@ const Payment = () => {
        content = <div>loading...</div>
     } else if(data) {
     content = data?.data?.map((item) => (
-            <div key={item.user_id} className='col-4 p-5 mx-3'>
+            <div key={item.user_id} className='col-md-4 p-5 mx-3'>
         <form onSubmit={handleSubmit}>
         <div className='d-flex justify-content-between p-3 mb-1'>
-            <p className='color-white bold'>
+            <p
+                className='color-white bold'
+                style={{textShadow: '2px 2px 5px #000'}}
+            >
                 Address detail
             </p>
-            <p className='color-white bold'>
+            <p 
+                className='color-white bold'
+                style={{textShadow: '2px 2px 5px #000'}}
+            >
                 edit
             </p>
         </div>
-        <div className='container bg-white rounded-4 p-2 mb-4'>
+        <div className='container bg-white rounded-4 p-2 mb-4 shadow'>
             <div className='border-bottom p-3'>
-                <p>{delivery === "dineIn" ? "Dine in Coffee Shop" : 
-                delivery === "pickUp" ? "Pick up at Coffee Shop" : "delivery to" }</p>
+                {delivery === "dineIn" ? <p className='color-black'>
+                    <span className='bold'>Dine in </span> 
+                    Coffee Shop</p> : 
+                delivery === "pickUp" ? <p className='color-black'>
+                    <span className='bold'>Pick up at </span> 
+                    Coffee Shop</p> : <p className='color-black'>
+                    <span className='bold'>Delivery to </span> 
+                    </p> }
             </div>
             <div className='border-bottom p-3'>
-                <p>{item.address}</p>
+                <p className='color-black'>
+                {   delivery === 'dineIn' || delivery === 'pickUp' ? 
+                    'Km 5 refinery road oppsite republic road, effurun, Jakarta' :
+                    item.address ? item.address : 'fill your address'}</p>
             </div>
             <div className=' p-3'>
-                <p>{item.phone_number}</p>
+                <p className='color-black'>{item.phone_number}</p>
             </div>
         </div>
         <div className='d-flex justify-content-between p-3 mb-1'>
-            <p className='color-white bold'>
+            <p 
+                className='color-white bold'
+                style={{textShadow: '2px 2px 5px #000'}}
+            >
                 Payment Method
             </p>
         </div>
-        <div className='container bg-white rounded-4 p-3 mb-4'>
-            <div className="form-check">
-                <input className="form-check-input" type="radio" value="card" id="card" name='payment'
+        <div className='container bg-white rounded-4 p-3 mb-4 shadow'>
+            <div className="form-check d-flex mb-2">
+                
+                <input className="form-check-input align-self-center me-2" type="radio" value="card" id="card" name='payment'
                 onChange={(e) => setPayment(e.target.value) } />
-                <label className="form-check-label" htmlFor="flexCheckDefault" >
+                <label className="d-flex align-items-center form-check-label color-black" htmlFor="flexCheckDefault" >
+                <div 
+                    className='me-2 rounded-3 d-flex align-items-center justify-content-center'
+                    style={{width: '40px', height: '40px', backgroundColor: '#F47B0A'}}
+                >
+                    <Image 
+                        src='/img/credit.svg'
+                        width={20}
+                        height={20}
+                    />
+                </div>
                     Card
                 </label>
             </div>
-            <div className="form-check">
-                <input className="form-check-input" type="radio" value="bank" id="bankAccount" name='payment'
+            <div className="form-check d-flex mb-2">
+                <input className="form-check-input align-self-center me-2" type="radio" value="bank" id="bankAccount" name='payment'
                 onChange={(e) => setPayment(e.target.value) } />
-                <label className="form-check-label" htmlFor="flexCheckChecked">
+                <label className="d-flex align-items-center form-check-label color-black" htmlFor="flexCheckChecked">
+                <div 
+                    className='me-2 rounded-3 d-flex align-items-center justify-content-center'
+                    style={{width: '40px', height: '40px', backgroundColor: '#895537'}}
+                >
+                    <Image 
+                        src='/img/debit.svg'
+                        width={20}
+                        height={20}
+                    />
+                </div>
                     Bank Account
                 </label>
             </div>
-            <div className="form-check">
-                <input className="form-check-input" type="radio" value="cash" id="cash" name='payment'
+            <div className="form-check d-flex">
+                <input className="form-check-input align-self-center me-2" type="radio" value="cash" id="cash" name='payment'
                 onChange={(e) => setPayment(e.target.value) } />
-                <label className="form-check-label" htmlFor="flexCheckDefault" >
-                    cash on delivery
+                <label className="d-flex align-items-center form-check-label color-black" htmlFor="flexCheckDefault" >
+                <div 
+                    className='me-2 rounded-3 d-flex align-items-center justify-content-center'
+                    style={{width: '40px', height: '40px', backgroundColor: '#FFBA33'}}
+                >
+                    <Image 
+                        src='/img/cash.svg'
+                        width={20}
+                        height={20}
+                    />
+                </div>
+                    Cash on delivery
                 </label>
             </div>
         </div>
         
         <div className='d-grid gap-2'>
-            <button className='btn btn-secondary py-3' 
+            <button className='btn btn-secondary bold py-3' 
             onClick={handleSubmit}>
                 Confirm and Pay
             </button>

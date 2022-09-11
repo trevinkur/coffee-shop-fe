@@ -3,6 +3,7 @@ import Promo from '../../Layouts/Products/Promo'
 import ProductsTemp from '../../Layouts/Products/ProductsTemp'
 import Meta from '../../Components/Meta'
 import Layout from '../../Components/Layout'
+import PromoBreakpoint from '../../Layouts/Products/PromoBreakpoint'
 
 const Products = ({products, coupons}) => {
   console.log(products, "page")
@@ -17,6 +18,7 @@ const Products = ({products, coupons}) => {
       <div className='row' style={{minHeight: '100vh'}}>
         <Promo coupons={coupons}/>
         <ProductsTemp products={products}/>
+        <PromoBreakpoint coupons={coupons} />
       </div>
     </main>
     </Layout>
@@ -26,7 +28,7 @@ const Products = ({products, coupons}) => {
 export const getStaticProps = async () => {
   const result = await fetch(`${process.env.URL_BE}api/v1/products`);
   const products = await result.json();
-  const res = await fetch(`${process.env.URL_BE}api/v1/coupon?limit=1`)
+  const res = await fetch(`${process.env.URL_BE}api/v1/coupon?limit=4`)
   const coupons = await res.json();
   return {
     props: {

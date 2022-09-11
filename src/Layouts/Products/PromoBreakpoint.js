@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import CardPromo from './CardPromo'
 
-const Promo = ({coupons}) => {
+const PromoBreakpoint = ({coupons}) => {
   
   const [code, setCode] = useState('')
   
@@ -10,7 +10,7 @@ const Promo = ({coupons}) => {
   }
 
   return (
-    <div className='d-none d-md-block col-md-3 p-4 border-end' style={{height: '100%'}}>
+    <div className='d-block d-md-none col-md-3 p-4 border-end' style={{height: '100%'}}>
         <div className='d-flex flex-column align-items-center justify-content-between mx-2' style={{minHeight: '100vh'}}>
             <div>
             <h3 className='color-secondary mb-3 text-center'>Promo for you</h3>
@@ -43,4 +43,4 @@ const Promo = ({coupons}) => {
   )
 }
 
-export default Promo
+export default PromoBreakpoint

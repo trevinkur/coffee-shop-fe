@@ -31,7 +31,7 @@ const SignIn = () => {
 
     }
   return (
-    <div className='col-6' style={{height: "100vh",}}>
+    <div className='col-md-6' style={{height: "100vh",}}>
             <div className='d-flex justify-content-between m-3 align-items-center' style={{height: "10%"}}>
                 <Image 
                     src="/img/logo.svg"
@@ -39,8 +39,8 @@ const SignIn = () => {
                     height={33}
                     alt={`logo`}
                 />
-                 <Link href="/auth/signin">
-                    <button className='btn btn-primary'>Sign In</button>
+                 <Link href="/auth/signup">
+                    <button className='btn btn-primary'>Sign Up</button>
                 </Link>
             </div>
             <h2 className='color-secondary text-center'>Sign In</h2>

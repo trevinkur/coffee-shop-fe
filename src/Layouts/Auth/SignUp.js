@@ -27,7 +27,7 @@ const SignUp = () => {
         .catch(err => alert(`${err}`))
     }
   return (
-    <div className='col-6' style={{height: "100vh", overflowY: "auto" }}>
+    <div className='col-md-6' style={{height: "100vh", overflowY: "auto" }}>
             <div className='d-flex justify-content-between m-3'>
                 <Image 
                     src="/img/logo.svg"
@@ -39,6 +39,7 @@ const SignUp = () => {
                     <button className='btn btn-primary'>Sign In</button>
                 </Link>
             </div>
+            <h2 className='color-secondary text-center'>Sign Up</h2>
         <form onSubmit={handleSubmit} className='p-5'>
             <div className="mb-3">
             <label htmlFor="email" className="form-label">Email address</label>

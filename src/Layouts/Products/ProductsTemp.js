@@ -12,7 +12,7 @@ const ProductsTemp = ({products}) => {
   } = useGetProducts({search: search, category })
 
   return (
-    <div className='col px-5 py-3'>
+    <div className='col-md px-5 py-3'>
         <div className='row mb-3'>
             <ProdCategory />
         </div>

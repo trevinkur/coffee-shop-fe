@@ -14,12 +14,6 @@ const OrderSummary = () => {
     // const [disc, setDisc] = useState([])
     const { data: coupon, isLoading: couponIsLoading, isError: couponIsError} = useGetCoupon(code)
     const [potongan, setPotongan] = useState(0)
-    // const coupon = {
-    //     condition: "Coffe Latte",
-    //     product: "Coffe Latte",
-    //     discount: 20
-    // } 
-    // const [total, setTotal] = useState(0)
 
     useEffect(()=> {
         setUserId(localStorage.getItem("userId"));
@@ -74,38 +68,51 @@ const OrderSummary = () => {
 
   return (
     
-    <div className='col-4 p-5 mx-3'>
-        <div className='container rounded-3 border bg-white'>
-            <h3 className='color-primary text-center my-5'>Order Summary</h3>
+    <div className='col-md-4 p-5 mx-3'>
+        <div className='d-flex justify-content-center mb-2'>
+            <h2 className='color-white me-3'
+                style={{textShadow: '2px 2px 5px #000'}}
+            >Check Your Item now </h2>
+        </div>
+        <div className='container rounded-3 border bg-white shadow'>
+            <h3 className='color-secondary text-center my-5'
+                style={{fontSize: '30px', color: '#362115'}}
+            >Order Summary</h3>
             <div className='mt-4' 
             style={{height: '18rem', overflow: 'auto'}}>
                 {content}
             </div>
             <div className='d-flex justify-content-between mx-2'>
-                <p>SubTotal</p>
-                <p>IDR {total}</p>
+                <p className='color-secondary'>SubTotal</p>
+                <p className='color-secondary'>IDR {total}</p>
             </div>
             <div className='d-flex justify-content-between mx-2'>
-                <p>Tax</p>
-                <p>IDR {total ? tax : 0}</p>
+                <p className='color-secondary'>Tax</p>
+                <p className='color-secondary'>IDR {total ? tax : 0}</p>
             </div>
             <div className='d-flex justify-content-between mx-2 mb-3 border-bottom'>
-                <p>Shipping</p>
-                <p className='mb-3'>IDR {total && delivery === "door" ? shipping : 0}</p>
+                <p className='color-secondary'>Shipping</p>
+                <p className='mb-3 color-secondary'>IDR {total && delivery === "door" ? shipping : 0}</p>
             </div>
             <div className='d-flex flex-column'>
-                <p className='text-center'>discount</p>
+                <p className='text-center color-secondary'>discount</p>
                 <div className='d-flex justify-content-between mx-2 mb-3'>
                     {disc?.map((item) =><div key={item.product} className='d-flex flex-column'>
-                <p>{item?.product}</p>
-                <p>IDR {item?.discount}</p></div>)}
+                <p className='color-secondary'>{item?.product}</p>
+                <p className='color-secondary'>IDR {item?.discount}</p></div>)}
                 </div>
                 
                 
             </div>
             <div className='d-flex justify-content-between mx-2 mb-3'>
-                <h3>Total</h3>
-                <h3>IDR {total ? (total - potongan + tax ) : 0}</h3>
+                <h3 
+                    className='color-secondary'
+                    style={{fontSize: '30px', color: '#362115'}}
+                >Total</h3>
+                <h3
+                    className='color-secondary'
+                    style={{fontSize: '25px', color: '#362115'}}
+                >IDR {total ? (total - potongan + tax ) : 0}</h3>
             </div>
             
         </div>
@@ -120,19 +127,19 @@ function Render({item}) {
     <div className='col-4'>
         <Image
             className='rounded-3'
-            src="/img/contoh.png"
+            src={`${process.env.URL_BE}static/${item.cover}`}
             width={82}
             height={82}
             alt="contoh"
          />
     </div>
     <div className='col-5 d-flex flex-column ' >
-        <p>{item.product}</p>
-        <p>X {item.quantity}</p>
-        <p>{item.size}</p>
+        <p className='color-black'>{item.product}</p>
+        <p className='color-black'>X {item.quantity}</p>
+        <p className='color-black'>{item.size}</p>
     </div>
     <div className='col-3'>
-        <p  className='ms-3'>{item.total_price}</p>
+        <p  className='ms-3 color-black'>{item.total_price}</p>
     </div>
 </div>)
 }

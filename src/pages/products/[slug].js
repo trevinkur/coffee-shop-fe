@@ -71,6 +71,7 @@ const Product = ({product}) => {
                 now={now}
                 setTime={setTime}
                 time={time}
+                product={product}
             />
             <ProductDetail
             product={product} 
@@ -90,7 +91,7 @@ const Product = ({product}) => {
 }
 
 export const getStaticPaths = async () => {
-    const result = await fetch(`${process.env.URL_BE}api/v1/products`);
+    const result = await fetch(`${process.env.URL_BE}api/v1/products?limit=999`);
     const products = await result.json();
     const paths = products.data.map((product) => (
         {params:{ slug: product.slug}}

@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 const ProductImage = (props) => {
     const { 
         setDelivery, delivery,
-        setTime,
+        setTime, product,
         now, setNow
     } = props
 
@@ -16,20 +16,24 @@ const ProductImage = (props) => {
         setNow(e.target.value)
     }
   return (
-    <div className='col-4 d-flex flex-column align-items-center p-3 m-3'>
-    <div className='mb-5'>
+    <div className='col-lg-4 d-flex flex-column align-items-center p-3 m-3'>
+    <div className='mb-5 text-center rounded-circle shadow-lg'
+        style={{height: '250px', width: '250px'}}
+        
+    >
     <Image 
             className='rounded-circle'
-            src="/img/contoh.png"
-            width={300}
-            height={300}
+            // src="/img/contoh.png"
+            src={`${process.env.URL_BE}static/${product.data[0].cover}`}
+            width={250}
+            height={250}
             alt="contoh"
         />
     </div>
     <div className='container d-flex flex-column
      justify-content-center p-4
-     shadow rounded-2'>
-        <h3>Delivery and Time</h3>
+     shadow rounded-3'>
+        <h3 className='color-black mb-3'>Delivery and Time</h3>
         <div className='d-flex mb-3'>
             <button className={ `${delivery === "dineIn" ? 'btn btn-secondary' : "btn btn-light"} me-3` } 
             onClick={handleDelivery} value="dineIn">Dine in</button>

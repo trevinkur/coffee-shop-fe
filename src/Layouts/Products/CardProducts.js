@@ -5,7 +5,7 @@ const CardProducts = ({product}) => {
   return (
     <Link href={`/products/${product.slug}?size=regular`}>
       <article 
-        className="col-3 d-flex flex-column align-items-center justify-content-between border rounded-5 shadow-lg m-3"
+        className="col-3 d-flex flex-column align-items-center justify-content-between border rounded-5 shadow-lg mx-3 mt-2 mb-5"
         style={{width: "10rem"}} type="button">
         <legend className='d-flex text-center rounded-circle shadow' 
         style={{marginTop: "-40px", overflow: 'hidden', width: "125px", height: "125px"}}>

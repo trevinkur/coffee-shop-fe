@@ -13,7 +13,7 @@ const ProdCategory = () => {
             query: {...query, category: e.target.id}
         })
     }
-  return (<div className='mb-4 d-flex'>
+  return (<><div className='mb-4 d-none d-sm-flex'>
         
         <div className={`${router.query.category === "favorite" ?
          styles.active : ""}  ${styles.nav} d-flex justify-content-center color-secondary col rounded-2 py-3`}
@@ -45,6 +45,37 @@ const ProdCategory = () => {
         </div>
 
     </div>
+    <div className="dropdown d-flex justify-content-center d-sm-none my-4">
+        <button className="btn btn-primary dropdown-toggle align-self-center shadow"
+         type="button" data-bs-toggle="dropdown" aria-expanded="false"
+         style={{width: '60%'}}
+         >
+            {router.query.category ? router.query.category : 'Select Category'}
+        </button>
+        <ul className="dropdown-menu" style={{width: '60%'}}>
+            <li><a 
+                className="dropdown-item" 
+                onClick={handleNav}
+                id=''
+                >Favorite Product</a></li>
+            <li><a 
+                className="dropdown-item" 
+                onClick={handleNav}
+                id='Coffee'
+                >Coffee</a></li>
+            <li><a 
+                className="dropdown-item"
+                onClick={handleNav}
+                id='Beverages'
+                >Beverages</a></li>
+            <li><a 
+                className="dropdown-item" 
+                onClick={handleNav}
+                id='Food'
+                >Food</a></li>       
+        </ul>
+    </div>
+    </>
   )
 }
 
