@@ -56,7 +56,7 @@ const CardHistory = ({item, userId, setCheck, check}) => {
                   check.update_at === item.update_at
                 ) &&  */
                 check.find((check) => check === item) &&
-                <i class="bi bi-check-lg"></i>
+                <i className="bi bi-check-lg"></i>
                  }
               </button>
             </div>

@@ -219,8 +219,8 @@ export default function Navbar() {
 
 
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
+    <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div className="offcanvas-header">
       <div className="navbar-brand me-3">
         <Image src='/img/logo.svg' 
         width={30}
@@ -230,16 +230,16 @@ export default function Navbar() {
         </div>
         
         <Link href="/"><a className="navbar-brand bold font-m " >Coffee Shop</a></Link>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <div class="offcanvas-body">
+      <div className="offcanvas-body">
       {userId ? (
         <form className="d-flex d-lg-none " role="search">
             <div className="input-group rounded-pill mx-3">
             <span className="input-group-text bg-gray"
             type="submit" onClick={handleSearch}
             >
-              <i class="bi bi-search"></i>
+              <i className="bi bi-search"></i>
             </span>
               <input 
                 className="form-control me-2 bg-gray-1 " 
@@ -266,7 +266,7 @@ export default function Navbar() {
             </div>
             <ul className="dropdown-menu mt-2" style={{marginLeft: '-100px'}}>
               <li><a 
-                class="dropdown-item"
+                className="dropdown-item"
                 onClick={handleLogout} 
               >Logout</a>
               </li>
@@ -284,20 +284,20 @@ export default function Navbar() {
         </Link>
       </form>
       )}
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item text-center my-4 my-lg-0">
+        <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li className="nav-item text-center my-4 my-lg-0">
           <Link href="/">
               <a className={`nav-link ${router.route === '/' && 'color-secondary bold'} `} 
               aria-current="page" 
             >Home</a></Link>
           </li>
-          <li class="nav-item text-center my-4 my-lg-0">
+          <li className="nav-item text-center my-4 my-lg-0">
           <Link href="/products">
             <a className={`nav-link ${router.route === '/products' && 'color-secondary bold'} `} 
             >Products</a>
           </Link>
           </li>
-          <li class="nav-item text-center my-4 my-lg-0">
+          <li className="nav-item text-center my-4 my-lg-0">
           <Link href="/cart">
               <a className={`nav-link ${router.route === '/cart' && 'color-secondary bold'} `} 
               >Your Cart</a>
@@ -317,7 +317,7 @@ export default function Navbar() {
             <span className="input-group-text bg-gray"
             type="submit" onClick={handleSearch}
             >
-              <i class="bi bi-search"></i>
+              <i className="bi bi-search"></i>
             </span>
               <input 
                 className="form-control me-2 bg-gray-1 " 
@@ -344,7 +344,7 @@ export default function Navbar() {
             </div>
             <ul className="dropdown-menu mt-2" style={{marginLeft: '-100px'}}>
               <li><a 
-                class="dropdown-item"
+                className="dropdown-item"
                 onClick={handleLogout} 
               >Logout</a>
               </li>

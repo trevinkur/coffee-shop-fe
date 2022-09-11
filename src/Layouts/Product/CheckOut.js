@@ -71,7 +71,7 @@ const CheckOut = ({handleSubmit, setSize, product}) => {
             <div className='d-flex-column d-md-flex  align-items-center justify-content-center '>
                 <h3 className='d-none d-md-inline-block me-3 color-black'>Checkout</h3>
                 <button className='btn btn-primary   me-md-3 rounded-circle font-l ' onClick={handleSubmit}>
-                <i class="bi bi-arrow-right-short" />
+                <i className="bi bi-arrow-right-short" />
                 </button>
             </div>
             </form>

@@ -110,6 +110,7 @@ const Payment = () => {
                         src='/img/credit.svg'
                         width={20}
                         height={20}
+                        alt='credit'
                     />
                 </div>
                     Card
@@ -127,6 +128,7 @@ const Payment = () => {
                         src='/img/debit.svg'
                         width={20}
                         height={20}
+                        alt='debit'
                     />
                 </div>
                     Bank Account
@@ -144,6 +146,7 @@ const Payment = () => {
                         src='/img/cash.svg'
                         width={20}
                         height={20}
+                        alt='cash'
                     />
                 </div>
                     Cash on delivery

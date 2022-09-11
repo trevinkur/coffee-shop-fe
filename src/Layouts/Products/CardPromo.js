@@ -15,7 +15,7 @@ const CardPromo = ({coupons, code, setCode}) => {
   return (
     coupons?.data?.map((item) => {
       return(
-        <div 
+        <div key={item.coupon_id}
           className={`d-flex rounded-4 p-3 mb-3 ${styles.card} ${code === item.code && styles.active} `} 
           type='button'
           onClick={() => handleCoupon(item.code)}

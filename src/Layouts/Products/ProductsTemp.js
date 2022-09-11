@@ -27,8 +27,8 @@ const ProductsTemp = ({products}) => {
 const Spinner = () => {
 
   return(
-    <div class="spinner-border" role="status">
-      <span class="visually-hidden">Loading...</span>
+    <div className="spinner-border" role="status">
+      <span className="visually-hidden">Loading...</span>
     </div>
   )
 }
