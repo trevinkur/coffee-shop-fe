@@ -74,8 +74,8 @@ const SignIn = () => {
 
             { loading ? (
                 <div className='d-grid gap-2'>
-                    <button class="btn btn-primary py-3" type="button" disabled>
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <button className="btn btn-primary py-3" type="button" disabled>
+                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         Loading...
                     </button>
                 </div>

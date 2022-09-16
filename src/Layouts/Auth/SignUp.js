@@ -40,6 +40,7 @@ const SignUp = () => {
         .finally(() => setLoading(false))
     }
   return (
+    <>
     <div className='col-md-6' style={{height: "100vh", overflowY: "auto" }}>
             <div className='d-flex justify-content-between m-3'>
                 <Image 
@@ -89,8 +90,8 @@ const SignUp = () => {
 
             { loading ? (
                 <div className='d-grid gap-2'>
-                    <button class="btn btn-primary py-3" type="button" disabled>
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <button className="btn btn-primary py-3" type="button" disabled>
+                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         Loading...
                     </button>
                 </div>
@@ -105,6 +106,8 @@ const SignUp = () => {
            
         </form>
     </div>
+    
+    </>
   )
 }
 
