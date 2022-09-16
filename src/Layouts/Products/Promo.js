@@ -1,12 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CardPromo from './CardPromo'
 
 const Promo = ({coupons}) => {
   
-  const [code, setCode] = useState('')
-  
+  const [promo, setPromo] = useState(null)
+  const [refetch, setRefetch] = useState(false)
+  const [applyCoupon, setApplyCoupon] = useState('')
+
+  useEffect(() => {
+    setApplyCoupon(JSON.parse(localStorage.getItem('coupon')))
+  },[refetch])
+
+  console.log(applyCoupon?.title)
+
   const handleCoupon = (e) => {
-    localStorage.setItem("coupon", code)
+    localStorage.setItem("coupon", JSON.stringify(promo))
+    setRefetch(!refetch)
   }
 
   return (
@@ -19,14 +28,15 @@ const Promo = ({coupons}) => {
             <div>
             <CardPromo 
               coupons={coupons}
-              code={code}
-              setCode={setCode}  
+              promo={promo}
+              setPromo={setPromo}  
             />
             <div className='d-grid gap-2  my-4'>
                 <button className='btn btn-secondary px-5' 
                 onClick={handleCoupon}
                 >Apply Coupon</button>
             </div>
+            { applyCoupon && <p className='color-primary text-center mb-2 bold'>Coupon {applyCoupon?.title} Applied</p> }
             </div>  
             <div>
             <p className='mb-2 text-center bold'>Terms and Condition</p>

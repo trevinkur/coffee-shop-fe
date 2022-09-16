@@ -3,22 +3,22 @@ import React from 'react';
 import moment from 'moment';
 import styles from '../../styles/CardPromo.module.css'
 
-const CardPromo = ({coupons, code, setCode}) => {
+const CardPromo = ({coupons, promo, setPromo}) => {
   
   const handleCoupon = (target) => {
-    if(code === target) {
-      setCode('')
+    if(promo?.code === target.code) {
+      setPromo(null)
     } else {
-      setCode(target)
+      setPromo(target)
     }
   }
   return (
     coupons?.data?.map((item) => {
       return(
         <div key={item.coupon_id}
-          className={`d-flex rounded-4 p-3 mb-3 ${styles.card} ${code === item.code && styles.active} `} 
+          className={`d-flex rounded-4 p-3 mb-3 ${styles.card} ${promo?.code === item.code && styles.active} `} 
           type='button'
-          onClick={() => handleCoupon(item.code)}
+          onClick={() => handleCoupon({code: item.code, title: item.title})}
           >
           <div className='me-3 align-self-center'>
             <Image 

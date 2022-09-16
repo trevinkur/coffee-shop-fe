@@ -9,16 +9,18 @@ import { useGetOrders } from '../../helper/useOrders'
 const OrderSummary = () => {
     const [userId, setUserId] = useState() 
     const [delivery, setDelivery] = useState()
-    const [code, setCode] = useState("")
+    const [code, setCode] = useState(null)
     const {data, isLoading, isError} = useGetOrders(userId,"in_cart");
     // const [disc, setDisc] = useState([])
-    const { data: coupon, isLoading: couponIsLoading, isError: couponIsError} = useGetCoupon(code)
+    const { 
+        data: coupon, isLoading: couponIsLoading, isError: couponIsError
+    } = useGetCoupon(code ? code.code : '')
     const [potongan, setPotongan] = useState(0)
 
     useEffect(()=> {
         setUserId(localStorage.getItem("userId"));
         setDelivery(localStorage.getItem("delivery"));
-        setCode(localStorage.getItem("coupon"))
+        setCode(JSON.parse(localStorage.getItem("coupon")))
     }, [])
 
     let disc = [];
@@ -35,7 +37,7 @@ const OrderSummary = () => {
         if(coupon) {
             console.log(code)
             console.log(coupon)
-            disc = discount(coupon?.data[0] ,data);
+            disc = discount(coupon?.data[0] , data);
             disc.map((item) => {
                 item ? 
                 potongan += item.discount  : null;
