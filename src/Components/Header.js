@@ -8,7 +8,7 @@ export default function Header() {
                 <h3 className="color-white mb-4">We provide high quality beans, good taste, and healthy meals made 
                 by love just for you. Start your day with us for a bigger smile!</h3>
                 <button className="btn btn-primary px-5 py-2" 
-                onClick={() => console.log("hey")}
+                onClick={() => {}}
                 >Get Started</button>
             </div>
         </div>

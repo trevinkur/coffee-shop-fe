@@ -1,7 +1,9 @@
-import { addRequestMeta } from 'next/dist/server/request-meta';
+import axios from 'axios';
 import Image from 'next/image';
-import { Router, useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react'
+import {  useRouter } from 'next/router';
+import React, { useEffect,  useState } from 'react'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useGetOrders } from '../../helper/useOrders'
 import { useGetUsers } from '../../helper/useUsers';
 
@@ -11,37 +13,77 @@ const Payment = () => {
     const [payment, setPayment] = useState("");
     const [delivery, setDelivery] = useState("");
     const {data, isLoading, isError} = useGetUsers(userId)
+    const {data: order} = useGetOrders(userId,"in_cart");
 
     useEffect(()=> {
         setUserId(localStorage.getItem("userId"))
         setDelivery(localStorage.getItem("delivery"))
     },[]) 
 
-    // useEffect(() => {
-    //     fetch("")
-    // })
-   
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("hi")
         if(!payment) {
-            return
+            toast.error('Please Input Payment Method', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+        } else if(order?.data?.length === 0) {
+            toast.error('Your Cart is Empty', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         } else {
-        fetch(`${process.env.URL_BE}api/v1/orders?userId=${userId}`, {
-        method: "PATCH",
-        body: JSON.stringify({
-            payment_method: payment,
-            status: "fulfilled"
-        }),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        }
-    })
-    .then(res => { alert("Success, Your order will coming soon"); return res.json()})
-    .then((res) => router.push("/") )
-    .catch(err => console.log(err))
-
+        
+        axios({
+            url: `${process.env.URL_BE}api/v1/orders?userId=${userId}`,
+            method: "PATCH",
+            data: {
+                payment_method: payment,
+                status: "fulfilled"    
+            }
+        })
+        .then( res => {
+            toast.success('Success, Your order will be process', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+            return res.data
+        })
+        .then(() => {
+            setTimeout(() => {
+                router.push('/')
+            }, [3000])
+        })
+        .catch((err) => {
+            if(err.status === 500) {
+                toast.error('error something wrong',
+                {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
+            }
+        })    
         }
     
     }
@@ -166,7 +208,10 @@ const Payment = () => {
     ))} else if(isError) {
         content = <div>ada Error</div>
     }
-  return content
+  return (<>
+    { content}
+    <ToastContainer />
+    </>)
 }
 
 export default Payment
