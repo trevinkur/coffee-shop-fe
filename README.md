@@ -58,8 +58,23 @@ some technology used in this project.
 
 [Demo web app](https://coffee-shop-tr.netlify.app/)
 
+## Screenshot
+
+|name  | web   | mobile |
+| ------------- | ------------- | -------------|
+| Product Page       | ![coffee-shop-ss1](https://user-images.githubusercontent.com/105697744/190944303-a608e82d-7879-47e5-b1b0-ce61e5b91978.png) | ![coffee-shop-mobile-products](https://user-images.githubusercontent.com/105697744/190944387-85171660-80e4-4e30-ab66-1c7b2689f335.png)
+|
+| Product Detail        | ![coffee-shop-ss-product](https://user-images.githubusercontent.com/105697744/190944475-dd9cda9b-b25d-4ba5-bb85-a655d18b0f04.png)| ![localhost_3000_products_athenaeum_size=regular(iPhone 12 Pro)](https://user-images.githubusercontent.com/105697744/190944602-92499984-e310-4079-b83b-5a823dbc0337.png) | 
+| Cart Page | ![coffee-shop-ss-order](https://user-images.githubusercontent.com/105697744/190944769-a3e023f2-8aa4-4413-beac-cde87376b238.png)|![edit-res-profile]() |
+| History |![coffee-shop-history](https://user-images.githubusercontent.com/105697744/190944932-2a724896-eef4-476d-a112-0b05d9495d13.png)|![localhost_3000_products_athenaeum_size=regular(Samsung Galaxy S8+)](https://user-images.githubusercontent.com/105697744/190944888-4baa9742-0550-4302-ae4d-a8728417a23d.png) |
+
+
+
+
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+
 
 ## Getting Started
 
