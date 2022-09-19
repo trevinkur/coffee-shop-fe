@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Layout from '../../Components/Layout'
@@ -18,6 +19,7 @@ const Product = ({product}) => {
     const { size } = router.query ;
     // const [size, setSize] = useState("regular");
     const [price, setPrice] = useState()
+    const [loading, setLoading] = useState(false)
 
     useEffect(()=>{
        setUserId(localStorage.getItem("userId")) 
@@ -34,27 +36,36 @@ const Product = ({product}) => {
 
     const handleSubmit =  (e) => {
         e.preventDefault();
-        console.log(quantity)
         const totalProd = Array(quantity).fill()
-        console.log(totalProd)
         totalProd.map(() => {
-        fetch(`${process.env.URL_BE}api/v1/orders`, {
-            method: "POST",
-            body: JSON.stringify({
-                user_id: userId,
-                product_id: product.data[0].product_id,
-                size: size
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        }).then(res => { 
-            console.log("success");
-            localStorage.setItem("delivery", delivery);
-            localStorage.setItem("time", time);
-            router.push("/cart");
-            return res.json()})
-        .catch(err => console.log(err))
+            axios({
+                url: `${process.env.URL_BE}api/v1/orders`,
+                method: "POST",
+                data: {
+                    user_id: userId,
+                    product_id: product.data[0].product_id,
+                    size: size
+                }   
+            })
+            .then(() => {
+                localStorage.setItem("delivery", delivery);
+                localStorage.setItem("time", time);
+                router.push('/cart')
+            })
+            .catch((err) => {
+                if(err.status === 500) {
+                    toast.error('sorry there is something wrong please. contact us for more detail', {
+                        position: "top-right",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,        
+                    })
+                }
+            })
+            .finally(() => setLoading(false))
         })
         
 
@@ -77,6 +88,8 @@ const Product = ({product}) => {
             product={product} 
             quantity={quantity} setQuantity={setQuantity}
             price={price}
+            size={size}
+            userId={userId}
             />
             <CheckOut handleSubmit={handleSubmit} 
             //  setSize={setSize}
