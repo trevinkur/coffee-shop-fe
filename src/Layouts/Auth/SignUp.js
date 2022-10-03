@@ -3,6 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import React, { useState } from 'react'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const SignUp = () => {
     const [email, setEmail] = useState("");
@@ -28,14 +31,26 @@ const SignUp = () => {
             }
         })
         .then(res => {
-            alert('success')
-            router.replace("/auth/signin")
-        }).catch(err => {
-            if(err.response.status === 400) {
-                setErrMsg(err.response.data.message)
-            } else if(err.response.status === 500) {
-                setErrMsg('server is down')
-            }
+            toast.success('Sign Up Success', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+            setTimeout(()=> {
+                router.replace("/auth/signin")
+            }, [2000])
+        })
+        .catch(err => {
+            console.log(err)
+            // if(err.response.status === 400) {
+            //     setErrMsg(err.response.data.message)
+            // } else if(err.response.status === 500) {
+            //     setErrMsg('server is down')
+            // }
         })
         .finally(() => setLoading(false))
     }
@@ -106,6 +121,7 @@ const SignUp = () => {
            
         </form>
     </div>
+    <ToastContainer />
     
     </>
   )

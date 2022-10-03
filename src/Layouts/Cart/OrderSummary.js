@@ -42,6 +42,7 @@ const OrderSummary = () => {
                 item ? 
                 potongan += item.discount  : null;
             })
+            console.log(disc)
         } else if(isError) {
             content = <div>ERROR</div>
         }
@@ -99,9 +100,17 @@ const OrderSummary = () => {
             <div className='d-flex flex-column'>
                 <p className='text-center color-secondary'>discount</p>
                 <div className='d-flex justify-content-between mx-2 mb-3'>
-                    {disc?.map((item) =><div key={item.product} className='d-flex flex-column'>
-                <p className='color-secondary'>{item?.product}</p>
-                <p className='color-secondary'>IDR {item?.discount}</p></div>)}
+                    {console.log(disc)}
+                    {disc && 
+                    disc.map((item) =>{ 
+                        if(item) {
+                            return <div key={item.product} className='d-flex flex-column'>
+                            <p className='color-secondary'>{item?.product}</p>
+                            <p className='color-secondary'>IDR {item?.discount}</p></div>
+                        }
+                })
+                
+                }
                 </div>
                 
                 
