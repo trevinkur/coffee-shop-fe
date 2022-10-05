@@ -6,10 +6,10 @@ const nextConfig = {
     styledComponents: true,
   },
   env: {
-    URL_BE: 'https://whale-app-a7nox.ondigitalocean.app/'
+    URL_BE: 'https://witty-jewelry-bass.cyclic.app/'
   },
   images: {
-    domains: ['whale-app-a7nox.ondigitalocean.app']
+    domains: ['witty-jewelry-bass.cyclic.app']
   }
 }
 
