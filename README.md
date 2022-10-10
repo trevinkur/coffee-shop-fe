@@ -1,4 +1,4 @@
-# Hire Job App
+# Coffee Shop App
 <!-- NAVIGATION -->
 <ol>
     <li>
